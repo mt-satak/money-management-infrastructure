@@ -18,21 +18,23 @@ layout: default
 2. **セキュリティ**: 誰がアクセスできるかを細かく制御
 3. **通信制御**: インターネット接続や内部通信のルールを設定
 
-## ネットワーク構成図
+## アーキテクチャ概要図
 
-```
-インターネット
-    ↓
-Internet Gateway (玄関)
-    ↓
-VPC (10.0.0.0/16) ← あなた専用のネットワーク空間
-├─ Public Subnet (10.0.1.0/24)  ← インターネット接続可能
-│  └─ ALB (ロードバランサー)
-├─ Private Subnet (10.0.11.0/24) ← 外部から直接アクセス不可
-│  ├─ ECS Fargate (アプリサーバー)
-│  └─ RDS MySQL (データベース)
-└─ NAT Gateway ← Private Subnetからのインターネットアクセスルート
-```
+![Architecture Overview](assets/images/architecture-overview.drawio)
+
+*AWS公式アイコンを使用した全体アーキテクチャ図*
+
+## VPCネットワーク詳細図
+
+![VPC Network Detail](assets/images/vpc-network-detail.drawio)
+
+*IPアドレス設計とルートテーブル構成を含む詳細ネットワーク図*
+
+## セキュリティグループ構成図
+
+![Security Groups](assets/images/security-groups.drawio)
+
+*多層防御によるトラフィック制御とセキュリティルール*
 
 ## 設計の理由
 

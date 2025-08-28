@@ -1,0 +1,271 @@
+<mxfile host="app.diagrams.net" modified="2025-08-28T00:00:00.000Z" agent="5.0" etag="" version="24.7.7" type="device">
+  <diagram name="Security Groups" id="security">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Security Groups - Traffic Flow Control" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="360" height="30" />
+        </mxCell>
+
+        <!-- Internet -->
+        <mxCell id="internet" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.internet;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="78" height="78" />
+        </mxCell>
+        <mxCell id="internet-label" value="Internet&#xa;0.0.0.0/0" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="74" y="165" width="90" height="40" />
+        </mxCell>
+
+        <!-- ALB Security Group -->
+        <mxCell id="alb-sg-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="60" width="180" height="140" />
+        </mxCell>
+        <mxCell id="alb-sg-title" value="ALB Security Group" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="320" y="70" width="140" height="30" />
+        </mxCell>
+
+        <!-- ALB -->
+        <mxCell id="alb" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;" vertex="1" parent="1">
+          <mxGeometry x="331" y="110" width="78" height="78" />
+        </mxCell>
+
+        <!-- ALB Rules -->
+        <mxCell id="alb-inbound" value="Inbound:&#xa;• HTTPS (443): 0.0.0.0/0&#xa;• HTTP (80): 0.0.0.0/0" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="170" height="50" />
+        </mxCell>
+        <mxCell id="alb-outbound" value="Outbound:&#xa;• 8080: ECS-SG" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="110" height="40" />
+        </mxCell>
+
+        <!-- ECS Security Group -->
+        <mxCell id="ecs-sg-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="260" width="180" height="180" />
+        </mxCell>
+        <mxCell id="ecs-sg-title" value="ECS Security Group" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="270" width="140" height="30" />
+        </mxCell>
+
+        <!-- ECS Fargate -->
+        <mxCell id="ecs" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs;" vertex="1" parent="1">
+          <mxGeometry x="331" y="320" width="78" height="78" />
+        </mxCell>
+
+        <!-- ECS Rules -->
+        <mxCell id="ecs-inbound" value="Inbound:&#xa;• 8080: ALB-SG" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="280" width="110" height="40" />
+        </mxCell>
+        <mxCell id="ecs-outbound" value="Outbound:&#xa;• HTTPS (443): 0.0.0.0/0&#xa;• 3306: RDS-SG" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="340" width="140" height="50" />
+        </mxCell>
+
+        <!-- RDS Security Group -->
+        <mxCell id="rds-sg-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="500" width="180" height="140" />
+        </mxCell>
+        <mxCell id="rds-sg-title" value="RDS Security Group" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="510" width="140" height="30" />
+        </mxCell>
+
+        <!-- RDS -->
+        <mxCell id="rds" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4D72F3;gradientDirection=north;fillColor=#3334B9;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;" vertex="1" parent="1">
+          <mxGeometry x="331" y="550" width="78" height="78" />
+        </mxCell>
+
+        <!-- RDS Rules -->
+        <mxCell id="rds-inbound" value="Inbound:&#xa;• MySQL (3306): ECS-SG" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="540" width="160" height="40" />
+        </mxCell>
+        <mxCell id="rds-outbound" value="Outbound:&#xa;• なし (デフォルト拒否)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="500" y="580" width="160" height="40" />
+        </mxCell>
+
+        <!-- Traffic Flow Arrows -->
+        <!-- Internet to ALB -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#e51400;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="158" y="119" as="sourcePoint" />
+            <mxPoint x="280" y="119" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow1-label" value="HTTPS/HTTP" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#e51400;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="174" y="95" width="90" height="30" />
+        </mxCell>
+
+        <!-- ALB to ECS -->
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#f0a30a;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="200" as="sourcePoint" />
+            <mxPoint x="370" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow2-label" value="Port 8080" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#f0a30a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="220" width="80" height="30" />
+        </mxCell>
+
+        <!-- ECS to RDS -->
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#2d7600;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="440" as="sourcePoint" />
+            <mxPoint x="370" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow3-label" value="MySQL 3306" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#2d7600;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="460" width="90" height="30" />
+        </mxCell>
+
+        <!-- ECS to Internet (outbound) -->
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="340" as="sourcePoint" />
+            <mxPoint x="158" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow4-label" value="HTTPS (外部API)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="230" width="100" height="30" />
+        </mxCell>
+
+        <!-- Security Group Details Table -->
+        <mxCell id="sg-table" value="Security Group Details" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="80" width="180" height="30" />
+        </mxCell>
+
+        <mxCell id="table-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="720" y="120" width="420" height="520" />
+        </mxCell>
+
+        <!-- Table Headers -->
+        <mxCell id="header-sg" value="Security Group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472c4;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="130" width="120" height="30" />
+        </mxCell>
+        <mxCell id="header-direction" value="Direction" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472c4;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="130" width="80" height="30" />
+        </mxCell>
+        <mxCell id="header-port" value="Port" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472c4;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="130" width="60" height="30" />
+        </mxCell>
+        <mxCell id="header-source" value="Source/Destination" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472c4;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="130" width="140" height="30" />
+        </mxCell>
+
+        <!-- ALB Security Group Rows -->
+        <mxCell id="alb-sg-name" value="ALB-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="160" width="120" height="30" />
+        </mxCell>
+        <mxCell id="alb-in1" value="Inbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="160" width="80" height="30" />
+        </mxCell>
+        <mxCell id="alb-port1" value="443" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="160" width="60" height="30" />
+        </mxCell>
+        <mxCell id="alb-source1" value="0.0.0.0/0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="160" width="140" height="30" />
+        </mxCell>
+
+        <mxCell id="alb-sg-name2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="190" width="120" height="30" />
+        </mxCell>
+        <mxCell id="alb-in2" value="Inbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="190" width="80" height="30" />
+        </mxCell>
+        <mxCell id="alb-port2" value="80" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="190" width="60" height="30" />
+        </mxCell>
+        <mxCell id="alb-source2" value="0.0.0.0/0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="190" width="140" height="30" />
+        </mxCell>
+
+        <mxCell id="alb-sg-name3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="220" width="120" height="30" />
+        </mxCell>
+        <mxCell id="alb-out1" value="Outbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="220" width="80" height="30" />
+        </mxCell>
+        <mxCell id="alb-port3" value="8080" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="220" width="60" height="30" />
+        </mxCell>
+        <mxCell id="alb-source3" value="ECS-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="220" width="140" height="30" />
+        </mxCell>
+
+        <!-- ECS Security Group Rows -->
+        <mxCell id="ecs-sg-name" value="ECS-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="270" width="120" height="30" />
+        </mxCell>
+        <mxCell id="ecs-in1" value="Inbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="270" width="80" height="30" />
+        </mxCell>
+        <mxCell id="ecs-port1" value="8080" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="270" width="60" height="30" />
+        </mxCell>
+        <mxCell id="ecs-source1" value="ALB-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="270" width="140" height="30" />
+        </mxCell>
+
+        <mxCell id="ecs-sg-name2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="300" width="120" height="30" />
+        </mxCell>
+        <mxCell id="ecs-out1" value="Outbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="300" width="80" height="30" />
+        </mxCell>
+        <mxCell id="ecs-port2" value="443" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="300" width="60" height="30" />
+        </mxCell>
+        <mxCell id="ecs-source2" value="0.0.0.0/0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="300" width="140" height="30" />
+        </mxCell>
+
+        <mxCell id="ecs-sg-name3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="330" width="120" height="30" />
+        </mxCell>
+        <mxCell id="ecs-out2" value="Outbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="330" width="80" height="30" />
+        </mxCell>
+        <mxCell id="ecs-port3" value="3306" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="330" width="60" height="30" />
+        </mxCell>
+        <mxCell id="ecs-source3" value="RDS-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="330" width="140" height="30" />
+        </mxCell>
+
+        <!-- RDS Security Group Rows -->
+        <mxCell id="rds-sg-name" value="RDS-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="380" width="120" height="30" />
+        </mxCell>
+        <mxCell id="rds-in1" value="Inbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="380" width="80" height="30" />
+        </mxCell>
+        <mxCell id="rds-port1" value="3306" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="380" width="60" height="30" />
+        </mxCell>
+        <mxCell id="rds-source1" value="ECS-SG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="380" width="140" height="30" />
+        </mxCell>
+
+        <mxCell id="rds-sg-name2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="410" width="120" height="30" />
+        </mxCell>
+        <mxCell id="rds-out1" value="Outbound" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="850" y="410" width="80" height="30" />
+        </mxCell>
+        <mxCell id="rds-port2" value="なし" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="930" y="410" width="60" height="30" />
+        </mxCell>
+        <mxCell id="rds-source2" value="デフォルト拒否" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="410" width="140" height="30" />
+        </mxCell>
+
+        <!-- Security Best Practices -->
+        <mxCell id="best-practices-title" value="セキュリティベストプラクティス" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="460" width="220" height="30" />
+        </mxCell>
+
+        <mxCell id="best-practices" value="✅ 最小権限の原則&#xa;• 必要最小限のポート・プロトコルのみ許可&#xa;• Security Groupは「許可」のみ、NACLで「拒否」を補完&#xa;&#xa;✅ 多層防御 (Defense in Depth)&#xa;• インターネット → ALB → ECS → RDS の順で制御&#xa;• 各層で独立したセキュリティ制御&#xa;&#xa;✅ 参照による制御&#xa;• IPアドレスではなくSecurity Group IDで制御&#xa;• 動的なIP変更に対応&#xa;&#xa;✅ ログ・監視&#xa;• VPC Flow Logsで通信ログを記録&#xa;• CloudTrailでAPI呼び出しを監査" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="730" y="490" width="350" height="140" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
