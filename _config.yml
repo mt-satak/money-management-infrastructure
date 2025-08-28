@@ -1,0 +1,29 @@
+title: Money Management Infrastructure
+description: AWS CDK Infrastructure Documentation
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Author information
+author:
+  name: Money Management Project
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Navigation
+header_pages:
+  - vpc-design.md
+  - learning-notes.md
+  - deployment-guide.md
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
