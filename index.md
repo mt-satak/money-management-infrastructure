@@ -28,6 +28,7 @@ Internet → CloudFront → ALB → ECS Fargate → RDS MySQL
 ## ドキュメント
 
 - [VPC設計解説](vpc-design.html) - ネットワーク基盤の設計思想と構成
+- [AWS CDK基礎概念](cdk-concepts.html) - L1/L2/L3抽象化レベルと実装パターン
 - [学習記録](learning-notes.html) - 学習過程で得た知見とメモ
 - [デプロイガイド](deployment-guide.html) - 段階的なデプロイメント手順
 

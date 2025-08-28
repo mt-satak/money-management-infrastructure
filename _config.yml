@@ -17,6 +17,7 @@ permalink: pretty
 # Navigation
 header_pages:
   - vpc-design.md
+  - cdk-concepts.md
   - learning-notes.md
   - deployment-guide.md
 

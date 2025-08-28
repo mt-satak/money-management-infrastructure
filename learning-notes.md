@@ -19,6 +19,12 @@ CDK構築過程で得た知見と学習内容をここに記録していきま�
 - Public/Privateサブネットの役割分担
 - セキュリティグループによる通信制御
 
+### AWS CDK抽象化レベルの理解
+- L1 (CFN Resources): CloudFormationの直接マッピング
+- L2 (AWS Constructs): ベストプラクティス内蔵の高レベルAPI
+- L3 (Patterns): 複数サービス組み合わせのアーキテクチャパターン
+- 今回はL2メインで学習効果とベストプラクティスを両立
+
 ### 今後の学習予定
 - [ ] CDKでのVPC構築実装
 - [ ] RDS MySQLの構築
