@@ -1,0 +1,165 @@
+<svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font: bold 16px Arial; fill: #232F3E; }
+      .label-text { font: 12px Arial; fill: #232F3E; }
+      .small-text { font: 10px Arial; fill: #232F3E; }
+      .aws-orange { fill: #FF9900; stroke: #FF9900; }
+      .aws-blue { fill: #232F3E; stroke: #232F3E; }
+      .vpc-green { fill: none; stroke: #7AA116; stroke-width: 2; stroke-dasharray: 5,5; }
+      .subnet-public { fill: #d5e8d4; stroke: #82b366; stroke-width: 2; }
+      .subnet-private { fill: #ffe6cc; stroke: #d79b00; stroke-width: 2; }
+      .connection { stroke: #232F3E; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .data-flow { stroke: #0066CC; stroke-width: 2; fill: none; stroke-dasharray: 3,3; marker-end: url(#arrowhead-blue); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#232F3E" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066CC" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title-text">Money Management - AWS Architecture Overview</text>
+  
+  <!-- Internet Cloud -->
+  <ellipse cx="120" cy="100" rx="50" ry="30" fill="#E8F4FD" stroke="#4A90E2" stroke-width="2"/>
+  <text x="120" y="105" text-anchor="middle" class="label-text">Internet</text>
+  
+  <!-- CloudFront -->
+  <rect x="250" y="70" width="80" height="60" rx="5" fill="#9D5AAE" stroke="#fff" stroke-width="2"/>
+  <text x="290" y="95" text-anchor="middle" fill="white" class="small-text">CloudFront</text>
+  <text x="290" y="108" text-anchor="middle" fill="white" class="small-text">CDN</text>
+  <text x="290" y="150" text-anchor="middle" class="small-text">Global Distribution</text>
+  
+  <!-- S3 Bucket -->
+  <rect x="420" y="70" width="80" height="60" rx="5" fill="#569A31" stroke="#fff" stroke-width="2"/>
+  <text x="460" y="95" text-anchor="middle" fill="white" class="small-text">S3 Bucket</text>
+  <text x="460" y="108" text-anchor="middle" fill="white" class="small-text">Static Site</text>
+  <text x="460" y="150" text-anchor="middle" class="small-text">React Frontend</text>
+  
+  <!-- VPC Container -->
+  <rect x="80" y="200" width="1000" height="450" class="vpc-green" rx="10"/>
+  <text x="100" y="220" class="label-text" fill="#7AA116">VPC: 10.0.0.0/16 (money-management-vpc)</text>
+  
+  <!-- Internet Gateway -->
+  <rect x="520" y="240" width="80" height="50" fill="#146EB4" stroke="#fff" stroke-width="2" rx="5"/>
+  <text x="560" y="260" text-anchor="middle" fill="white" class="small-text">Internet</text>
+  <text x="560" y="275" text-anchor="middle" fill="white" class="small-text">Gateway</text>
+  
+  <!-- Availability Zone A -->
+  <rect x="120" y="320" width="420" height="300" fill="none" stroke="#147EBA" stroke-width="2" stroke-dasharray="8,4" rx="5"/>
+  <text x="140" y="340" class="small-text" fill="#147EBA">Availability Zone A (ap-northeast-1a)</text>
+  
+  <!-- Availability Zone C -->
+  <rect x="620" y="320" width="420" height="300" fill="none" stroke="#147EBA" stroke-width="2" stroke-dasharray="8,4" rx="5"/>
+  <text x="640" y="340" class="small-text" fill="#147EBA">Availability Zone C (ap-northeast-1c)</text>
+  
+  <!-- Public Subnet A -->
+  <rect x="140" y="360" width="180" height="100" class="subnet-public" rx="5"/>
+  <text x="150" y="380" class="small-text" fill="#82b366">Public Subnet A</text>
+  <text x="150" y="395" class="small-text" fill="#82b366">10.0.1.0/24</text>
+  
+  <!-- Public Subnet C -->
+  <rect x="640" y="360" width="180" height="100" class="subnet-public" rx="5"/>
+  <text x="650" y="380" class="small-text" fill="#82b366">Public Subnet C</text>
+  <text x="650" y="395" class="small-text" fill="#82b366">10.0.2.0/24</text>
+  
+  <!-- NAT Gateway A -->
+  <rect x="200" y="410" width="60" height="40" fill="#146EB4" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="230" y="430" text-anchor="middle" fill="white" class="small-text">NAT-GW</text>
+  
+  <!-- NAT Gateway C -->
+  <rect x="700" y="410" width="60" height="40" fill="#146EB4" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="730" y="430" text-anchor="middle" fill="white" class="small-text">NAT-GW</text>
+  
+  <!-- Application Load Balancer -->
+  <rect x="480" y="380" width="160" height="60" fill="#D13212" stroke="#fff" stroke-width="2" rx="5"/>
+  <text x="560" y="405" text-anchor="middle" fill="white" class="label-text">Application</text>
+  <text x="560" y="420" text-anchor="middle" fill="white" class="label-text">Load Balancer</text>
+  
+  <!-- Private Subnet A -->
+  <rect x="140" y="490" width="380" height="110" class="subnet-private" rx="5"/>
+  <text x="150" y="510" class="small-text" fill="#d79b00">Private Subnet A: 10.0.11.0/24</text>
+  
+  <!-- Private Subnet C -->
+  <rect x="640" y="490" width="380" height="110" class="subnet-private" rx="5"/>
+  <text x="650" y="510" class="small-text" fill="#d79b00">Private Subnet C: 10.0.12.0/24</text>
+  
+  <!-- ECS Fargate Tasks A -->
+  <rect x="160" y="530" width="50" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="185" y="550" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="185" y="565" text-anchor="middle" fill="white" class="small-text">Task1</text>
+  
+  <rect x="230" y="530" width="50" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="255" y="550" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="255" y="565" text-anchor="middle" fill="white" class="small-text">Task2</text>
+  
+  <!-- ECS Fargate Tasks C -->
+  <rect x="660" y="530" width="50" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="685" y="550" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="685" y="565" text-anchor="middle" fill="white" class="small-text">Task3</text>
+  
+  <rect x="730" y="530" width="50" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="755" y="550" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="755" y="565" text-anchor="middle" fill="white" class="small-text">Task4</text>
+  
+  <!-- RDS Primary -->
+  <rect x="360" y="530" width="70" height="50" fill="#3F48CC" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="395" y="550" text-anchor="middle" fill="white" class="small-text">RDS MySQL</text>
+  <text x="395" y="565" text-anchor="middle" fill="white" class="small-text">Primary</text>
+  
+  <!-- RDS Standby -->
+  <rect x="850" y="530" width="70" height="50" fill="#3F48CC" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="885" y="550" text-anchor="middle" fill="white" class="small-text">RDS MySQL</text>
+  <text x="885" y="565" text-anchor="middle" fill="white" class="small-text">Standby</text>
+  
+  <!-- Connections -->
+  <!-- Internet to CloudFront -->
+  <line x1="170" y1="100" x2="250" y2="100" class="connection"/>
+  <text x="210" y="95" text-anchor="middle" class="small-text">HTTPS</text>
+  
+  <!-- CloudFront to S3 -->
+  <line x1="330" y1="100" x2="420" y2="100" class="connection"/>
+  
+  <!-- CloudFront to ALB -->
+  <path d="M 290 130 Q 290 200 520 380" class="connection"/>
+  <text x="350" y="250" class="small-text">API Requests</text>
+  
+  <!-- Internet Gateway to ALB -->
+  <line x1="560" y1="290" x2="560" y2="380" class="connection"/>
+  
+  <!-- ALB to ECS Tasks -->
+  <path d="M 520 410 Q 400 450 255 530" class="connection"/>
+  <path d="M 520 410 Q 400 450 185 530" class="connection"/>
+  <path d="M 600 410 Q 700 450 685 530" class="connection"/>
+  <path d="M 600 410 Q 700 450 755 530" class="connection"/>
+  
+  <!-- ECS to RDS -->
+  <line x1="280" y1="555" x2="360" y2="555" class="connection"/>
+  <line x1="210" y1="555" x2="360" y2="555" class="connection"/>
+  <line x1="710" y1="555" x2="850" y2="555" class="connection"/>
+  <line x1="780" y1="555" x2="850" y2="555" class="connection"/>
+  
+  <!-- RDS Replication -->
+  <line x1="430" y1="555" x2="850" y2="555" class="data-flow"/>
+  <text x="640" y="575" text-anchor="middle" class="small-text" fill="#0066CC">Multi-AZ Replication</text>
+  
+  <!-- NAT Gateway connections -->
+  <path d="M 230 450 Q 230 470 255 530" stroke="#146EB4" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+  <path d="M 730 450 Q 730 470 755 530" stroke="#146EB4" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+  <text x="150" y="485" class="small-text" fill="#146EB4">Internet Access</text>
+  <text x="650" y="485" class="small-text" fill="#146EB4">Internet Access</text>
+  
+  <!-- Cost Information -->
+  <rect x="850" y="50" width="300" height="120" fill="#f0f8ff" stroke="#4A90E2" stroke-width="1" rx="5"/>
+  <text x="860" y="70" class="label-text" fill="#4A90E2">推定月額コスト</text>
+  <text x="860" y="90" class="small-text">• ECS Fargate (0.25vCPU, 0.5GB): $15</text>
+  <text x="860" y="105" class="small-text">• RDS MySQL (db.t3.micro): $15</text>
+  <text x="860" y="120" class="small-text">• ALB: $18</text>
+  <text x="860" y="135" class="small-text">• S3 + CloudFront: $5</text>
+  <text x="860" y="150" class="small-text">• Data Transfer: $5-10</text>
+  <text x="1000" y="165" class="label-text" fill="#4A90E2">総計: $58-73/月</text>
+  
+</svg>

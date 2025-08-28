@@ -20,21 +20,28 @@ layout: default
 
 ## アーキテクチャ概要図
 
-![Architecture Overview](assets/images/architecture-overview.drawio)
+![Architecture Overview](assets/images/architecture-overview.svg)
 
 *AWS公式アイコンを使用した全体アーキテクチャ図*
 
 ## VPCネットワーク詳細図
 
-![VPC Network Detail](assets/images/vpc-network-detail.drawio)
+![VPC Network Detail](assets/images/vpc-network-detail.svg)
 
 *IPアドレス設計とルートテーブル構成を含む詳細ネットワーク図*
 
 ## セキュリティグループ構成図
 
-![Security Groups](assets/images/security-groups.drawio)
+![Security Groups](assets/images/security-groups.svg)
 
 *多層防御によるトラフィック制御とセキュリティルール*
+
+---
+
+**編集可能なソースファイル**: 
+- [architecture-overview.drawio](assets/images/architecture-overview.drawio) 
+- [vpc-network-detail.drawio](assets/images/vpc-network-detail.drawio)
+- [security-groups.drawio](assets/images/security-groups.drawio)
 
 ## 設計の理由
 

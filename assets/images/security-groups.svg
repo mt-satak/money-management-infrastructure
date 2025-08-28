@@ -1,0 +1,270 @@
+<svg width="1400" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font: bold 18px Arial; fill: #232F3E; }
+      .subtitle-text { font: bold 14px Arial; fill: #232F3E; }
+      .label-text { font: 12px Arial; fill: #232F3E; }
+      .small-text { font: 10px Arial; fill: #232F3E; }
+      .tiny-text { font: 9px monospace; fill: #232F3E; }
+      .sg-alb { fill: #f8cecc; stroke: #b85450; stroke-width: 2; }
+      .sg-ecs { fill: #fff2cc; stroke: #d6b656; stroke-width: 2; }
+      .sg-rds { fill: #d5e8d4; stroke: #82b366; stroke-width: 2; }
+      .traffic-internet { stroke: #e51400; stroke-width: 3; fill: none; marker-end: url(#arrow-red); }
+      .traffic-alb { stroke: #f0a30a; stroke-width: 3; fill: none; marker-end: url(#arrow-orange); }
+      .traffic-db { stroke: #2d7600; stroke-width: 3; fill: none; marker-end: url(#arrow-green); }
+      .traffic-outbound { stroke: #6c8ebf; stroke-width: 2; fill: none; stroke-dasharray: 4,4; marker-end: url(#arrow-blue); }
+      .table-header { fill: #4472c4; stroke: #000; }
+      .table-cell { fill: #ffffff; stroke: #000; }
+    </style>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e51400" />
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f0a30a" />
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2d7600" />
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6c8ebf" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" class="title-text">Security Groups - Multi-Layer Defense Architecture</text>
+  
+  <!-- Internet -->
+  <ellipse cx="120" cy="100" rx="60" ry="35" fill="#E8F4FD" stroke="#4A90E2" stroke-width="2"/>
+  <text x="120" y="95" text-anchor="middle" class="label-text">Internet</text>
+  <text x="120" y="110" text-anchor="middle" class="small-text">0.0.0.0/0</text>
+  
+  <!-- ALB Security Group -->
+  <rect x="280" y="50" width="200" height="120" class="sg-alb" rx="8"/>
+  <text x="290" y="70" class="subtitle-text" fill="#b85450">ALB Security Group</text>
+  
+  <!-- ALB -->
+  <rect x="330" y="90" width="100" height="60" fill="#D13212" stroke="#fff" stroke-width="2" rx="5"/>
+  <text x="380" y="115" text-anchor="middle" fill="white" class="label-text">Application</text>
+  <text x="380" y="130" text-anchor="middle" fill="white" class="label-text">Load Balancer</text>
+  
+  <!-- ALB Rules Display -->
+  <text x="510" y="80" class="small-text">Inbound Rules:</text>
+  <text x="510" y="95" class="tiny-text">• HTTPS (443): 0.0.0.0/0</text>
+  <text x="510" y="108" class="tiny-text">• HTTP (80): 0.0.0.0/0</text>
+  <text x="510" y="130" class="small-text">Outbound Rules:</text>
+  <text x="510" y="145" class="tiny-text">• Port 8080: ECS-SG</text>
+  
+  <!-- ECS Security Group -->
+  <rect x="280" y="220" width="200" height="140" class="sg-ecs" rx="8"/>
+  <text x="290" y="240" class="subtitle-text" fill="#d6b656">ECS Security Group</text>
+  
+  <!-- ECS Tasks -->
+  <rect x="310" y="260" width="70" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="345" y="280" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="345" y="295" text-anchor="middle" fill="white" class="small-text">Tasks</text>
+  
+  <rect x="390" y="260" width="70" height="50" fill="#D13212" stroke="#fff" stroke-width="2" rx="3"/>
+  <text x="425" y="280" text-anchor="middle" fill="white" class="small-text">ECS</text>
+  <text x="425" y="295" text-anchor="middle" fill="white" class="small-text">Tasks</text>
+  
+  <!-- ECS Rules Display -->
+  <text x="510" y="240" class="small-text">Inbound Rules:</text>
+  <text x="510" y="255" class="tiny-text">• Port 8080: ALB-SG</text>
+  <text x="510" y="280" class="small-text">Outbound Rules:</text>
+  <text x="510" y="295" class="tiny-text">• HTTPS (443): 0.0.0.0/0</text>
+  <text x="510" y="308" class="tiny-text">• MySQL (3306): RDS-SG</text>
+  
+  <!-- RDS Security Group -->
+  <rect x="280" y="410" width="200" height="120" class="sg-rds" rx="8"/>
+  <text x="290" y="430" class="subtitle-text" fill="#82b366">RDS Security Group</text>
+  
+  <!-- RDS -->
+  <rect x="330" y="450" width="100" height="60" fill="#3F48CC" stroke="#fff" stroke-width="2" rx="5"/>
+  <text x="380" y="475" text-anchor="middle" fill="white" class="label-text">RDS MySQL</text>
+  <text x="380" y="490" text-anchor="middle" fill="white" class="label-text">Database</text>
+  
+  <!-- RDS Rules Display -->
+  <text x="510" y="440" class="small-text">Inbound Rules:</text>
+  <text x="510" y="455" class="tiny-text">• MySQL (3306): ECS-SG</text>
+  <text x="510" y="480" class="small-text">Outbound Rules:</text>
+  <text x="510" y="495" class="tiny-text">• None (Default Deny)</text>
+  
+  <!-- Traffic Flow Arrows -->
+  <!-- Internet to ALB -->
+  <line x1="180" y1="100" x2="280" y2="100" class="traffic-internet"/>
+  <text x="230" y="95" text-anchor="middle" class="small-text" fill="#e51400">HTTPS/HTTP</text>
+  
+  <!-- ALB to ECS -->
+  <line x1="380" y1="170" x2="380" y2="220" class="traffic-alb"/>
+  <text x="400" y="200" class="small-text" fill="#f0a30a">Port 8080</text>
+  
+  <!-- ECS to RDS -->
+  <line x1="380" y1="360" x2="380" y2="410" class="traffic-db"/>
+  <text x="400" y="390" class="small-text" fill="#2d7600">MySQL 3306</text>
+  
+  <!-- ECS to Internet (outbound) -->
+  <path d="M 280 280 Q 200 250 180 120" class="traffic-outbound"/>
+  <text x="200" y="180" class="small-text" fill="#6c8ebf">External APIs</text>
+  
+  <!-- Security Group Rules Table -->
+  <text x="750" y="80" class="subtitle-text">Security Group Rules Detail</text>
+  
+  <!-- Table Background -->
+  <rect x="720" y="100" width="650" height="420" fill="#f8f9fa" stroke="#6c757d" stroke-width="1" rx="5"/>
+  
+  <!-- Table Headers -->
+  <rect x="730" y="110" width="120" height="30" class="table-header"/>
+  <text x="790" y="130" text-anchor="middle" fill="white" class="small-text">Security Group</text>
+  
+  <rect x="850" y="110" width="80" height="30" class="table-header"/>
+  <text x="890" y="130" text-anchor="middle" fill="white" class="small-text">Direction</text>
+  
+  <rect x="930" y="110" width="60" height="30" class="table-header"/>
+  <text x="960" y="130" text-anchor="middle" fill="white" class="small-text">Protocol</text>
+  
+  <rect x="990" y="110" width="60" height="30" class="table-header"/>
+  <text x="1020" y="130" text-anchor="middle" fill="white" class="small-text">Port</text>
+  
+  <rect x="1050" y="110" width="140" height="30" class="table-header"/>
+  <text x="1120" y="130" text-anchor="middle" fill="white" class="small-text">Source/Destination</text>
+  
+  <rect x="1190" y="110" width="100" height="30" class="table-header"/>
+  <text x="1240" y="130" text-anchor="middle" fill="white" class="small-text">Purpose</text>
+  
+  <!-- ALB Security Group Rows -->
+  <rect x="730" y="140" width="120" height="25" fill="#f8cecc" stroke="#b85450"/>
+  <text x="790" y="157" text-anchor="middle" class="tiny-text">ALB-SG</text>
+  
+  <rect x="850" y="140" width="80" height="25" class="table-cell"/>
+  <text x="890" y="157" text-anchor="middle" class="tiny-text">Inbound</text>
+  
+  <rect x="930" y="140" width="60" height="25" class="table-cell"/>
+  <text x="960" y="157" text-anchor="middle" class="tiny-text">TCP</text>
+  
+  <rect x="990" y="140" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="157" text-anchor="middle" class="tiny-text">443</text>
+  
+  <rect x="1050" y="140" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="157" text-anchor="middle" class="tiny-text">0.0.0.0/0</text>
+  
+  <rect x="1190" y="140" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="157" text-anchor="middle" class="tiny-text">HTTPS Access</text>
+  
+  <!-- Additional ALB rows -->
+  <rect x="730" y="165" width="120" height="25" fill="#f8cecc" stroke="#b85450"/>
+  <rect x="850" y="165" width="80" height="25" class="table-cell"/>
+  <text x="890" y="182" text-anchor="middle" class="tiny-text">Inbound</text>
+  <rect x="930" y="165" width="60" height="25" class="table-cell"/>
+  <text x="960" y="182" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="165" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="182" text-anchor="middle" class="tiny-text">80</text>
+  <rect x="1050" y="165" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="182" text-anchor="middle" class="tiny-text">0.0.0.0/0</text>
+  <rect x="1190" y="165" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="182" text-anchor="middle" class="tiny-text">HTTP Redirect</text>
+  
+  <rect x="730" y="190" width="120" height="25" fill="#f8cecc" stroke="#b85450"/>
+  <rect x="850" y="190" width="80" height="25" class="table-cell"/>
+  <text x="890" y="207" text-anchor="middle" class="tiny-text">Outbound</text>
+  <rect x="930" y="190" width="60" height="25" class="table-cell"/>
+  <text x="960" y="207" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="190" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="207" text-anchor="middle" class="tiny-text">8080</text>
+  <rect x="1050" y="190" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="207" text-anchor="middle" class="tiny-text">ECS-SG</text>
+  <rect x="1190" y="190" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="207" text-anchor="middle" class="tiny-text">App Forward</text>
+  
+  <!-- ECS Security Group Rows -->
+  <rect x="730" y="230" width="120" height="25" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="790" y="247" text-anchor="middle" class="tiny-text">ECS-SG</text>
+  
+  <rect x="850" y="230" width="80" height="25" class="table-cell"/>
+  <text x="890" y="247" text-anchor="middle" class="tiny-text">Inbound</text>
+  <rect x="930" y="230" width="60" height="25" class="table-cell"/>
+  <text x="960" y="247" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="230" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="247" text-anchor="middle" class="tiny-text">8080</text>
+  <rect x="1050" y="230" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="247" text-anchor="middle" class="tiny-text">ALB-SG</text>
+  <rect x="1190" y="230" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="247" text-anchor="middle" class="tiny-text">App Traffic</text>
+  
+  <rect x="730" y="255" width="120" height="25" fill="#fff2cc" stroke="#d6b656"/>
+  <rect x="850" y="255" width="80" height="25" class="table-cell"/>
+  <text x="890" y="272" text-anchor="middle" class="tiny-text">Outbound</text>
+  <rect x="930" y="255" width="60" height="25" class="table-cell"/>
+  <text x="960" y="272" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="255" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="272" text-anchor="middle" class="tiny-text">443</text>
+  <rect x="1050" y="255" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="272" text-anchor="middle" class="tiny-text">0.0.0.0/0</text>
+  <rect x="1190" y="255" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="272" text-anchor="middle" class="tiny-text">External APIs</text>
+  
+  <rect x="730" y="280" width="120" height="25" fill="#fff2cc" stroke="#d6b656"/>
+  <rect x="850" y="280" width="80" height="25" class="table-cell"/>
+  <text x="890" y="297" text-anchor="middle" class="tiny-text">Outbound</text>
+  <rect x="930" y="280" width="60" height="25" class="table-cell"/>
+  <text x="960" y="297" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="280" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="297" text-anchor="middle" class="tiny-text">3306</text>
+  <rect x="1050" y="280" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="297" text-anchor="middle" class="tiny-text">RDS-SG</text>
+  <rect x="1190" y="280" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="297" text-anchor="middle" class="tiny-text">Database</text>
+  
+  <!-- RDS Security Group Rows -->
+  <rect x="730" y="320" width="120" height="25" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="790" y="337" text-anchor="middle" class="tiny-text">RDS-SG</text>
+  
+  <rect x="850" y="320" width="80" height="25" class="table-cell"/>
+  <text x="890" y="337" text-anchor="middle" class="tiny-text">Inbound</text>
+  <rect x="930" y="320" width="60" height="25" class="table-cell"/>
+  <text x="960" y="337" text-anchor="middle" class="tiny-text">TCP</text>
+  <rect x="990" y="320" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="337" text-anchor="middle" class="tiny-text">3306</text>
+  <rect x="1050" y="320" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="337" text-anchor="middle" class="tiny-text">ECS-SG</text>
+  <rect x="1190" y="320" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="337" text-anchor="middle" class="tiny-text">MySQL Access</text>
+  
+  <rect x="730" y="345" width="120" height="25" fill="#d5e8d4" stroke="#82b366"/>
+  <rect x="850" y="345" width="80" height="25" class="table-cell"/>
+  <text x="890" y="362" text-anchor="middle" class="tiny-text">Outbound</text>
+  <rect x="930" y="345" width="60" height="25" class="table-cell"/>
+  <text x="960" y="362" text-anchor="middle" class="tiny-text">-</text>
+  <rect x="990" y="345" width="60" height="25" class="table-cell"/>
+  <text x="1020" y="362" text-anchor="middle" class="tiny-text">-</text>
+  <rect x="1050" y="345" width="140" height="25" class="table-cell"/>
+  <text x="1120" y="362" text-anchor="middle" class="tiny-text">Default Deny</text>
+  <rect x="1190" y="345" width="100" height="25" class="table-cell"/>
+  <text x="1240" y="362" text-anchor="middle" class="tiny-text">Security</text>
+  
+  <!-- Best Practices Section -->
+  <text x="730" y="400" class="subtitle-text">Security Best Practices</text>
+  
+  <rect x="720" y="420" width="650" height="320" fill="#f0f8ff" stroke="#4A90E2" stroke-width="1" rx="5"/>
+  
+  <text x="740" y="445" class="label-text" fill="#4A90E2">✅ 最小権限の原則 (Principle of Least Privilege)</text>
+  <text x="750" y="465" class="small-text">• 必要最小限のポート・プロトコルのみを許可</text>
+  <text x="750" y="480" class="small-text">• Security Groupは「許可」のみ、Network ACLで「拒否」を補完</text>
+  
+  <text x="740" y="505" class="label-text" fill="#4A90E2">✅ 多層防御 (Defense in Depth)</text>
+  <text x="750" y="525" class="small-text">• Internet → ALB → ECS → RDS の順でセキュリティ層を構築</text>
+  <text x="750" y="540" class="small-text">• 各層で独立したセキュリティ制御を実装</text>
+  
+  <text x="740" y="565" class="label-text" fill="#4A90E2">✅ 参照による制御 (Reference-based Control)</text>
+  <text x="750" y="585" class="small-text">• IPアドレス範囲ではなくSecurity Group IDで制御</text>
+  <text x="750" y="600" class="small-text">• 動的なIP変更やオートスケーリングに対応</text>
+  
+  <text x="740" y="625" class="label-text" fill="#4A90E2">✅ 監査・ログ (Auditing & Logging)</text>
+  <text x="750" y="645" class="small-text">• VPC Flow Logsで通信ログを記録・分析</text>
+  <text x="750" y="660" class="small-text">• CloudTrailでAPI呼び出しを監査</text>
+  <text x="750" y="675" class="small-text">• CloudWatch Logsでアプリケーションログを集約</text>
+  
+  <text x="740" y="700" class="label-text" fill="#e51400">⚠️ 重要な注意点</text>
+  <text x="750" y="720" class="small-text">• デフォルトでは全ての通信が拒否される</text>
+  <text x="750" y="735" class="small-text">• Security Groupの変更は即座に反映される</text>
+  
+</svg>
