@@ -6,3 +6,34 @@ node_modules
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+# CDK Context - 環境固有の設定（アカウントIDなど含む）
+cdk.context.json
+
+# IDE・エディタ設定
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS固有ファイル
+.DS_Store
+Thumbs.db
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 環境変数・設定ファイル
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 一時ファイル
+*.tmp
+*.temp
